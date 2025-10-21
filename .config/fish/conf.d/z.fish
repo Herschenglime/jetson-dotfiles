@@ -1,1 +1,1 @@
-lua5.3 $HOME/dev/zlua/z.lua --init fish | source
+lua5.4 $HOME/dev/zlua/z.lua --init fish | source
