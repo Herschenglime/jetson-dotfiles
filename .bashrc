@@ -116,12 +116,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# run zoxide (fish is too old for integration to work)
-eval "$(zoxide init bash)"
+#export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+#export LD_LIBRARY_PATH=/usr/local/cuda/lib64\
+#                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64\
-                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=$HOME/.cargo/bin${PATH:+:${PATH}}
 
 # start fish
     if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -131,6 +130,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64\
     fi
 
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-. "$HOME/.cargo/env"
-xhost +
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# . "$HOME/.cargo/env"
+# xhost +
