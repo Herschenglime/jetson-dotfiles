@@ -122,14 +122,16 @@ fi
 
 export PATH=$HOME/.cargo/bin${PATH:+:${PATH}}
 
-# start fish
+export EDITOR=nvim
+if [[ ":$LD_LIBRARY_PATH:" != *":/usr/local/lib:"* ]]; then
+    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+fi
+
+
+# start fish - must come last since remaining code will not be read
     if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
     then
       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
       exec fish $LOGIN_OPTION
     fi
 
-
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# . "$HOME/.cargo/env"
-# xhost +
