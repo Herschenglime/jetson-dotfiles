@@ -6,3 +6,7 @@ RUN sudo apt update && \
     sudo apt-get install -y ros-humble-isaac-ros-nvblox && \
     rosdep update && \
     rosdep install isaac_ros_nvblox
+
+# cd to the target directory and install the rosdeps
+# RUN cd /workspaces/isaac_ros-dev && rosdep update && \
+#    rosdep install isaac_ros_nvblox

@@ -1,4 +1,5 @@
 CONFIG_IMAGE_KEY=ros2_humble.swamp
 CONFIG_DOCKER_SEARCH_DIRS=(../ros_ws/src/isaac_ros_common/docker ../lib/src/gxf/docker ~/workspaces/isaac_pipeline)
 CONFIG_CONTAINER_NAME_SUFFIX=swamp
-BASE_DOCKER_REGISTRY_NAMES=("nvcr.io/isaac/ros")
+# VERY IMPORTANT! The guide has the wrong registry name which causes the huge base image to not be found and tries to be rebuilt instead
+BASE_DOCKER_REGISTRY_NAMES=("nvcr.io/nvidia/isaac/ros")
