@@ -127,11 +127,23 @@ if [[ ":$LD_LIBRARY_PATH:" != *":/usr/local/lib:"* ]]; then
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 fi
 
+export ISAAC_ROS_WS=/home/team/workspaces/isaac_ros-dev/
 
-# start fish - must come last since remaining code will not be read
-    if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-    then
-      shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-      exec fish $LOGIN_OPTION
+# run this only if outside distrobox
+if [ -z $CONTAINER_ID ]; then
+    # source ros stuff
+    source /opt/ros/humble/setup.bash
+    
+    # launch fish
+  if command -v fish >/dev/null 2>&1; then
+
+    if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]; then
+    shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+    exec fish $LOGIN_OPTION
     fi
-
+  else
+    echo "Fish shell not found. Falling back to Bash."
+  fi  
+else
+	source /opt/ros/$CONTAINER_ID/setup.bash
+fi

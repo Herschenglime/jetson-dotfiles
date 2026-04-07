@@ -90,4 +90,4 @@ abbr --add gl git log
 abbr --add robo ssh robo@robo.local
 abbr --add skmok sudo killall kmonad
 abbr --add yl "yadm list | fzf"
-
+abbr --add isaac "cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh"
