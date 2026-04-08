@@ -120,6 +120,11 @@ fi
 #export LD_LIBRARY_PATH=/usr/local/cuda/lib64\
 #                         ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
+# cuda path from default install bashrc:
+export PATH=/usr/local/cuda-12.6/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
+
+
 export PATH=$HOME/.cargo/bin${PATH:+:${PATH}}
 
 export EDITOR=nvim
@@ -127,6 +132,7 @@ if [[ ":$LD_LIBRARY_PATH:" != *":/usr/local/lib:"* ]]; then
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 fi
 
+export ISAAC_ROS_WS=/home/robo/workspaces/isaac_ros-dev/
 
 # start fish - must come last since remaining code will not be read
     if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -134,4 +140,3 @@ fi
       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
       exec fish $LOGIN_OPTION
     fi
-
