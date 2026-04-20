@@ -10,3 +10,11 @@ RUN sudo apt update && \
 # cd to the target directory and install the rosdeps
 # RUN cd /workspaces/isaac_ros-dev && rosdep update && \
 #    rosdep install isaac_ros_nvblox
+
+# make the terminal reasonable to look at with custom bashrc
+ENV TERM=xterm-256color
+COPY .bashrc /home/admin/.bashrc
+# give user proper perms
+USER root
+RUN chown admin:admin /home/admin/.bashrc
+USER admin
