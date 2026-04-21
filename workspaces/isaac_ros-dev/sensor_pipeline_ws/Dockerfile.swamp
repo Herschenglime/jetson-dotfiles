@@ -1,9 +1,10 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-# install nvblox in the container
+# install deps
 RUN sudo apt update && \
-    sudo apt-get install -y ros-humble-isaac-ros-nvblox && \
+    sudo apt-get install -y ros-humble-usb-cam ros-humble-pcl-ros \
+    ros-humble-isaac-ros-nvblox && \
     rosdep update && \
     rosdep install isaac_ros_nvblox
 
@@ -15,6 +16,6 @@ RUN sudo apt update && \
 ENV TERM=xterm-256color
 COPY .bashrc /home/admin/.bashrc
 # give user proper perms
-USER root
-RUN chown admin:admin /home/admin/.bashrc
-USER admin
+# USER root
+# RUN chown admin:admin /home/admin/.bashrc
+# USER admin
